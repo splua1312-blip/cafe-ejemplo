@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- 1. CONFIGURACIÓN BÁSICA: idioma, acentos, tamaño en celular y título de la pestaña -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café La Esquina | Cafetería en Puebla</title>
+  <meta name="description" content="Café de especialidad, pan dulce y desayunos en Puebla. Pide por WhatsApp.">
+
+  <!-- 2. TIPOGRAFÍAS de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 3. ESTILOS (CSS): colores, tamaños y acomodo -->
+  <style>
+    /* Colores de la marca: cambia estos valores para cada cliente */
+    :root {
+      --cafe: #3b2416;
+      --cafe-claro: #6f4a32;
+      --crema: #f7f1e8;
+      --crema-2: #efe4d3;
+      --acento: #c8873a;
+      --texto: #2a1d14;
+      --gris: #7a6a5c;
+      --blanco: #ffffff;
+      --whatsapp: #1fa855;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", Arial, sans-serif; color: var(--texto); background: var(--crema); line-height: 1.6; }
+    a { color: inherit; }
+    .contenedor { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* Aviso de demostración */
+    .aviso { background: var(--cafe); color: var(--crema-2); text-align: center; font-size: 13px; padding: 8px 16px; }
+
+    /* Menú de navegación */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(247, 241, 232, .95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--crema-2); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-family: "Playfair Display", Georgia, serif; font-size: 22px; font-weight: 700; color: var(--cafe); text-decoration: none; }
+    .nav ul { display: flex; gap: 22px; list-style: none; }
+    .nav ul a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--cafe-claro); }
+    .nav ul a:hover { color: var(--acento); }
+
+    /* Portada */
+    .portada { background: linear-gradient(135deg, var(--cafe) 0%, var(--cafe-claro) 100%); color: var(--crema); padding: 80px 0 90px; }
+    .portada small { color: var(--acento); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; }
+    .portada h1 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(36px, 7vw, 60px); line-height: 1.1; margin: 12px 0 18px; max-width: 640px; }
+    .portada p { font-size: 18px; max-width: 520px; color: var(--crema-2); }
+    .botones { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .boton { display: inline-block; padding: 14px 26px; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 16px; }
+    .boton-principal { background: var(--acento); color: var(--blanco); }
+    .boton-secundario { border: 2px solid var(--crema-2); color: var(--crema); }
+
+    /* Secciones */
+    section { padding: 70px 0; }
+    h2 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(28px, 5vw, 38px); color: var(--cafe); margin-bottom: 10px; }
+    .subtitulo { color: var(--gris); margin-bottom: 36px; }
+
+    /* Menú de productos */
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .tarjeta { background: var(--blanco); border-radius: 16px; padding: 26px; box-shadow: 0 4px 18px rgba(59, 36, 22, .07); }
+    .tarjeta h3 { font-family: "Playfair Display", Georgia, serif; color: var(--cafe); font-size: 22px; margin-bottom: 14px; }
+    .producto { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--crema-2); }
+    .producto:last-child { border-bottom: none; }
+    .precio { font-weight: 600; color: var(--acento); white-space: nowrap; }
+
+    /* Horario y ubicación */
+    .fondo-claro { background: var(--crema-2); }
+    .dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    .horario li { list-style: none; display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(59, 36, 22, .12); }
+    .mapa { width: 100%; height: 300px; border: 0; border-radius: 16px; }
+
+    /* Opiniones */
+    .opiniones { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .opinion { background: var(--blanco); border-radius: 16px; padding: 24px; }
+    .estrellas { color: var(--acento); letter-spacing: 2px; margin-bottom: 8px; }
+    .opinion span { display: block; margin-top: 12px; font-weight: 600; color: var(--cafe-claro); font-size: 14px; }
+
+    /* Llamado a la acción */
+    .cta { background: var(--cafe); color: var(--crema); text-align: center; }
+    .cta h2 { color: var(--crema); }
+    .cta p { color: var(--crema-2); margin-bottom: 26px; }
+    .boton-whatsapp { background: var(--whatsapp); color: var(--blanco); }
+
+    /* Pie de página */
+    footer { background: #24150c; color: var(--crema-2); text-align: center; padding: 26px 20px; font-size: 14px; }
+
+    /* Botón flotante de WhatsApp */
+    .flotante { position: fixed; right: 18px; bottom: 18px; width: 58px; height: 58px; border-radius: 50%; background: var(--whatsapp); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0, 0, 0, .25); z-index: 20; }
+    .flotante svg { width: 30px; height: 30px; fill: var(--blanco); }
+
+    /* 4. AJUSTES PARA CELULAR: todo pasa a una sola columna */
+    @media (max-width: 720px) {
+      .nav ul { display: none; }
+      .dos-columnas { grid-template-columns: 1fr; }
+      .portada { padding: 60px 0 70px; }
+      section { padding: 54px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aviso">Página de demostración · Negocio ficticio creado como ejemplo</div>
+
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <header>
+    <div class="contenedor nav">
+      <a class="logo" href="#inicio">Café La Esquina</a>
+      <ul>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#horario">Horario</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- PORTADA -->
+  <section class="portada" id="inicio">
+    <div class="contenedor">
+      <small>Cafetería de barrio · Puebla</small>
+      <h1>El café de tu colonia, hecho con calma</h1>
+      <p>Café de especialidad, pan dulce recién horneado y desayunos caseros. Pide para llevar o visítanos.</p>
+      <div class="botones">
+        <a class="boton boton-principal" href="#menu">Ver el menú</a>
+        <a class="boton boton-secundario" href="#contacto">Pedir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENÚ DE PRODUCTOS -->
+  <section id="menu">
+    <div class="contenedor">
+      <h2>Nuestro menú</h2>
+      <p class="subtitulo">Precios de ejemplo en pesos mexicanos.</p>
+      <div class="menu-grid">
+        <div class="tarjeta">
+          <h3>Café</h3>
+          <div class="producto"><span>Americano</span><span class="precio">$35</span></div>
+          <div class="producto"><span>Capuchino</span><span class="precio">$48</span></div>
+          <div class="producto"><span>Latte</span><span class="precio">$50</span></div>
+          <div class="producto"><span>Café de olla</span><span class="precio">$32</span></div>
+        </div>
+        <div class="tarjeta">
+          <h3>Bebidas frías</h3>
+          <div class="producto"><span>Frappé de moka</span><span class="precio">$62</span></div>
+          <div class="producto"><span>Cold brew</span><span class="precio">$55</span></div>
+          <div class="producto"><span>Chai helado</span><span class="precio">$58</span></div>
+          <div class="producto"><span>Limonada natural</span><span class="precio">$35</span></div>
+        </div>
+        <div class="tarjeta">
+          <h3>Para acompañar</h3>
+          <div class="producto"><span>Concha</span><span class="precio">$18</span></div>
+          <div class="producto"><span>Chilaquiles</span><span class="precio">$85</span></div>
+          <div class="producto"><span>Molletes</span><span class="precio">$70</span></div>
+          <div class="producto"><span>Pastel del día</span><span class="precio">$55</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIO Y UBICACIÓN -->
+  <section class="fondo-claro" id="horario">
+    <div class="contenedor dos-columnas">
+      <div>
+        <h2>Horario</h2>
+        <p class="subtitulo">Te esperamos todos los días.</p>
+        <ul class="horario">
+          <li><span>Lunes a viernes</span><strong>7:30 a 21:00</strong></li>
+          <li><span>Sábado</span><strong>8:00 a 21:00</strong></li>
+          <li><span>Domingo</span><strong>9:00 a 15:00</strong></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ubicación</h2>
+        <p class="subtitulo">San José Xilotzingo, Puebla.</p>
+        <!-- Mapa de Google: cambia el texto después de "q=" por la dirección del cliente -->
+        <iframe class="mapa" loading="lazy" title="Mapa de ubicación"
+          src="https://www.google.com/maps?q=San+Jos%C3%A9+Xilotzingo,+72593+Puebla,+Pue.&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIONES -->
+  <section id="opiniones">
+    <div class="contenedor">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <p class="subtitulo">Opiniones de ejemplo.</p>
+      <div class="opiniones">
+        <div class="opinion"><div class="estrellas">★★★★★</div>“El mejor capuchino de la colonia y el pan siempre está calientito.”<span>Cliente de ejemplo</span></div>
+        <div class="opinion"><div class="estrellas">★★★★★</div>“Lugar tranquilo para trabajar un rato. Muy buena atención.”<span>Cliente de ejemplo</span></div>
+        <div class="opinion"><div class="estrellas">★★★★☆</div>“Los chilaquiles están deliciosos y el servicio es rápido.”<span>Cliente de ejemplo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LLAMADO A LA ACCIÓN -->
+  <section class="cta" id="contacto">
+    <div class="contenedor">
+      <h2>¿Se te antojó?</h2>
+      <p>Haz tu pedido por WhatsApp y pasa a recogerlo sin hacer fila.</p>
+      <!-- Cambia el número después de wa.me/ por el WhatsApp del cliente (52 + 10 dígitos) -->
+      <a class="boton boton-whatsapp" href="https://wa.me/522229549368?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20de%20cafeter%C3%ADa" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Café La Esquina (negocio ficticio) · Sitio de ejemplo creado por Santiago Cortes
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a class="flotante" href="https://wa.me/522229549368?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20de%20cafeter%C3%ADa" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 3.9 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>
+  </a>
+
+</body>
+</html>
